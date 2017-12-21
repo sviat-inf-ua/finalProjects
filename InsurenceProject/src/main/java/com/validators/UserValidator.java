@@ -9,13 +9,11 @@ import com.entity.Customer;
 @Component
 public class UserValidator implements Validator {
 
-	@Override
 	public boolean supports(Class<?> customer) {
 		
 		return Customer.class.isAssignableFrom(customer);
 	}
 
-	@Override
 	public void validate(Object target, Errors error) {
 		
 			Customer customer = (Customer)target;

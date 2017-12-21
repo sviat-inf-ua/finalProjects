@@ -26,7 +26,6 @@ public class CustomerDaoImpl implements ICustomerDao {
 		this.factory = factory;
 	}
 
-	@Override
 	public void createCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		Session session = null;
@@ -46,7 +45,6 @@ public class CustomerDaoImpl implements ICustomerDao {
 		}
 	}
 
-	@Override
 	public void deleteCustomer(String email) {
 		// TODO Auto-generated method stub
 		Session session = null;
@@ -71,7 +69,6 @@ public class CustomerDaoImpl implements ICustomerDao {
 			}
 	}
 
-	@Override
 	public void updateCusomer(String email) {
 		// TODO Auto-generated method stub
 		Session session = null;
@@ -93,7 +90,6 @@ public class CustomerDaoImpl implements ICustomerDao {
 		}
 	}
 
-	@Override
 	public Customer getCustomerByEmail(String email) {
 		Session session = null;
 		Transaction tx = null;
@@ -117,7 +113,6 @@ public class CustomerDaoImpl implements ICustomerDao {
 		return customer;
 	}
 
-	@Override
 	public Customer getCustomerById(long id) {
 		Session session = null;
 		Transaction tx = null;
@@ -139,7 +134,6 @@ public class CustomerDaoImpl implements ICustomerDao {
 		return customer;
 	}
 
-	@Override
 	public List<Customer> getAllCustomers() {
 		Session session = null;
 		Transaction tx = null;
@@ -162,7 +156,6 @@ public class CustomerDaoImpl implements ICustomerDao {
 		return list;
 	}
 
-	@Override
 	public List<Customer> getActiveCustomers(boolean status) {
 		Session session = null;
 		Transaction tx = null;
@@ -187,7 +180,6 @@ public class CustomerDaoImpl implements ICustomerDao {
 		return list;
 	}
 
-	@Override
 	public List<Customer> getInActiveCustomers(boolean status) {
 		Session session = null;
 		Transaction tx = null;

@@ -16,7 +16,6 @@ public class CustomerServiceImpl implements ICustomerService {
 	@Autowired
 	private ICustomerDao customerDao;
 
-	@Override
 	@Transactional
 	public void createCustomer(Customer customer) {
 		// TODO Auto-generated method stub
@@ -27,7 +26,6 @@ public class CustomerServiceImpl implements ICustomerService {
 		}
 	}
 
-	@Override
 	@Transactional
 	public void deleteCustomer(String email) {
 		// TODO Auto-generated method stub
@@ -38,7 +36,6 @@ public class CustomerServiceImpl implements ICustomerService {
 		}
 	}
 
-	@Override
 	@Transactional
 	public void updateCusomer(String email) {
 		// TODO Auto-generated method stub
@@ -49,7 +46,6 @@ public class CustomerServiceImpl implements ICustomerService {
 		}
 	}
 
-	@Override
 	@Transactional
 	public Customer getCustomerByEmail(String email) {
 		// TODO Auto-generated method stub
@@ -62,7 +58,6 @@ public class CustomerServiceImpl implements ICustomerService {
 		return customer;
 	}
 
-	@Override
 	@Transactional
 	public Customer getCustomerById(long id) {
 		
@@ -75,7 +70,6 @@ public class CustomerServiceImpl implements ICustomerService {
 		return customer;
 	}
 
-	@Override
 	@Transactional
 	public List<Customer> getAllCustomers() {
 		List<Customer> list = null;
@@ -87,7 +81,6 @@ public class CustomerServiceImpl implements ICustomerService {
 		return list;
 	}
 
-	@Override
 	@Transactional
 	public List<Customer> getActiveCustomers(boolean status) {
 		List<Customer> list = null;
@@ -99,7 +92,6 @@ public class CustomerServiceImpl implements ICustomerService {
 		return list;
 	}
 
-	@Override
 	@Transactional
 	public List<Customer> getInActiveCustomers(boolean status) {
 		List<Customer> list = null;
