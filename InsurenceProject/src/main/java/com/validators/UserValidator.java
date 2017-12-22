@@ -1,26 +1,49 @@
 package com.validators;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.entity.Customer;
+import com.entity.user.User;
+import com.service.UserService;
+
+/**
+ * Created by Sviatoslav on 25.03.2017.
+ */
 @Component
 public class UserValidator implements Validator {
 
-	public boolean supports(Class<?> customer) {
-		
-		return Customer.class.isAssignableFrom(customer);
-	}
+    @Autowired
+    private UserService userService;
 
-	public void validate(Object target, Errors error) {
-		
-			Customer customer = (Customer)target;
-			ValidationUtils.rejectIfEmpty(error, "fname", "", "First Name is required");
-			if(customer.getPswd().length() < 8) {
-				error.rejectValue("pswd", "Password must contain at least 8 characters");
-			}
-	}
+    @Override
+    public boolean supports(Class<?> aClass) {
+        return User.class.equals(aClass);
+    }
 
+    @Override
+    public void validate(Object o, Errors errors) {
+        User user = (User) o;
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "Required");
+        if (user.getUsername().length() < 4 || user.getUsername().length() > 32) {
+            errors.rejectValue("username", "Size.userForm.username");
+        }
+
+        if (userService.findByUsername(user.getUsername()) != null) {
+            errors.rejectValue("username", "Duplicate.userForm.username");
+        }
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");
+        if (user.getPassword().length() < 4 || user.getPassword().length() > 32) {
+            errors.rejectValue("password", "Size.userForm.password");
+        }
+
+        if (!user.getConfirmPassword().equals(user.getPassword())) {
+            errors.rejectValue("confirmPassword", "Different.userForm.password");
+        }
+    }
 }

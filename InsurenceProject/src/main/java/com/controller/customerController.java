@@ -76,8 +76,8 @@ public class customerController {
 		}
 		return model;
 	}
-	@RequestMapping("login")
+	/*@RequestMapping("login")
 	public String login() {
 		return "login";
-	}
+	}*/
 }
