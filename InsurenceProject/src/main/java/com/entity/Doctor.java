@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="doctor")
 public class Doctor {
 
 	@Id
@@ -31,7 +31,11 @@ public class Doctor {
 	private String firstName;
 	private String lastName;
 	private long cellPhone;
+	private String email;
+	private String password;
+	private String passwordCommit;
 	private int active;
+	
 	
 	public int getId() {
 		return id;
@@ -75,24 +79,47 @@ public class Doctor {
 	public void setActive(int active) {
 		this.active = active;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getPasswordCommit() {
+		return passwordCommit;
+	}
+	public void setPasswordCommit(String passwordCommit) {
+		this.passwordCommit = passwordCommit;
+	}
 	@Override
 	public String toString() {
 		return "Doctor [id=" + id + ", doctorTypes=" + doctorTypes + ", locations=" + locations + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", cellPhone=" + cellPhone + ", active=" + active + "]";
+				+ firstName + ", lastName=" + lastName + ", cellPhone=" + cellPhone + ", email=" + email + ", password="
+				+ password + ", passwordCommit=" + passwordCommit + ", active=" + active + "]";
 	}
-	public Doctor(List<DoctorType> doctorTypes, List<Location> locations, String firstName, String lastName,
-			int cellPhone, int active) {
+	public Doctor() {
 		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Doctor(int id, List<DoctorType> doctorTypes, List<Location> locations, String firstName, String lastName,
+			long cellPhone, String email, String password, String passwordCommit, int active) {
+		super();
+		this.id = id;
 		this.doctorTypes = doctorTypes;
 		this.locations = locations;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.cellPhone = cellPhone;
+		this.email = email;
+		this.password = password;
+		this.passwordCommit = passwordCommit;
 		this.active = active;
-	}
-	public Doctor() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 }

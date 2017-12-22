@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
-
+	
 	<!-- Add support for component scanning -->
 	<context:component-scan base-package="com" />
 	<context:component-scan base-package="com.app"></context:component-scan>
@@ -33,13 +33,12 @@
 	<mvc:default-servlet-handler />
 
 	<!-- Step 1: Define Database DataSource / connection pool -->
-	 <bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="${className}" />
-		<property name="jdbcUrl"
-			value="${url}" />
-		<property name="user" value="${username}" />
-		<property name="password" value="${password}" />
+		<property name="jdbcUrl" value="${url}" />
+		<property name="user" value="root" />
+		<property name="password" value="root" />
 
 		<!-- these are connection pool properties for C3P0 -->
 		<property name="minPoolSize" value="5" />
@@ -61,12 +60,9 @@
 		</property>
 	</bean>
 
-	<!-- <bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		max file size in bytes
-		<property name="maxUploadSize" value="2000000" />
-		other properties...
-	</bean> -->
+	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+		max file size in bytes <property name="maxUploadSize" value="2000000" /> 
+		other properties... </bean> -->
 
 	<!-- Step 3: Setup Hibernate transaction manager -->
 	<bean id="myTransactionManager"

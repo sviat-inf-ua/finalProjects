@@ -11,14 +11,14 @@ package com.dao;
 
 import java.util.List;
 
-public interface CrudDao<E, ID> {
+public interface CrudDao<E, Integer> {
 
 	 List<E> getAll();
 
 	 void save(E entity);
 
-	 E findOne(ID id);
+	 E findOne(Integer id);
 
-	 void delete(ID id);
+	 void delete(Integer id);
 
 }
