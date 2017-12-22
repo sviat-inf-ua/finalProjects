@@ -40,21 +40,8 @@ public class DoctorDaoImpl implements DoctorDao {
 	public void delete(Integer id) {
 		Session currentSession = sessionFactory.getCurrentSession();
 
-		Query theQuery = currentSession.createQuery("delete from Doctor where id=:doctorId");
+		Query theQuery = currentSession.createQuery("delete from doctor where id=:doctorId");
 		theQuery.setParameter("doctorId", id);
 		theQuery.executeUpdate();
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 }
